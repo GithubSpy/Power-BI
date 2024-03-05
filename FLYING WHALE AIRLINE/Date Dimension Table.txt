@@ -1,0 +1,14 @@
+Date Dimension TableDateDimension = 
+ADDCOLUMNS (
+    CALENDAR (DATE(2017, 1, 1), DATE(2018, 12, 31)),
+    "Year", YEAR([Date]),
+    "Quarter", QUARTER([Date]),
+    "MonthNumber", MONTH([Date]),
+    "MonthName", FORMAT([Date], "MMMM"),
+    "WeekOfYear", WEEKNUM([Date]),
+    "DayOfMonth", DAY([Date]),
+    "DayOfWeekNumber", WEEKDAY([Date]),
+    "DayOfWeekName", FORMAT([Date], "dddd"),
+    "IsWeekend", IF(WEEKDAY([Date], 2) > 5, TRUE, FALSE),
+    "IsLeapYear", IF(MONTH(DATE(YEAR([Date]), 2, 29)) = 2, TRUE, FALSE)
+)
